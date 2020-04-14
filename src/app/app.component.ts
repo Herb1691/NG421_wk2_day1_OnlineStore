@@ -8,11 +8,15 @@ import { ProductService } from './product.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  products: Array<Product> = [];
+  products: Array<Product>;
 
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
     this.products = this.productService.getProducts();
+  }
+
+  productWasAdded(product: Product): void {
+    this.productService.addToCart(product);
   }
 }
